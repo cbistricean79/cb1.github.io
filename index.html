@@ -138,7 +138,6 @@ body {
     </div>
 	
 <script>
-	
 const questions = [
     { question: "What Lake does Chicago Reside on?", answer: "Lake Michigan", options: ["Lake Erie", "Lake Superior", "Lake Huron"] },
     { question: "When was Chicago incorporated into a city?", answer: "1837", options: ["1820", "1845", "1853"] },
@@ -162,7 +161,7 @@ const questions = [
 function pressButton() {
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const options = [...randomQuestion.options, randomQuestion.answer].sort(() => Math.random() - 0.5);
- 
+
     const questionDiv = document.getElementById('question');
     questionDiv.innerHTML = `<p><strong>${randomQuestion.question}</strong></p>`;
 
@@ -185,9 +184,6 @@ function pressButton() {
             clearInterval(interval);
             document.querySelector('.correct').style.color = "green";
             document.querySelector('.correct').style.fontWeight = "bold";
-            if (document.querySelector('.incorrect')) {
-                showFailImage();
-            }
         }
     }, 1000);
 
@@ -197,11 +193,11 @@ function pressButton() {
         optionsElements.forEach(opt => opt.style.fontWeight = 'normal'); // Reset other options
         optionsElements.forEach(opt => opt.style.color = 'black'); // Reset other options color
         event.target.style.fontWeight = 'bold'; // Make clicked option bold
+        event.target.style.color = 'red'; // Make clicked option red
+
+        // Check if the clicked option is the correct answer
         if (event.target.textContent.includes(randomQuestion.answer)) {
-            event.target.style.color = 'green'; // Make correct option green
-        } else {
-            event.target.style.color = 'red'; // Make incorrect option red
-            event.target.classList.add('incorrect'); // Add class to incorrect option
+            correctAnswerSelected(); // Call the function if the correct answer is selected
         }
     }
 
@@ -210,17 +206,6 @@ function pressButton() {
     optionsElements.forEach(opt => opt.addEventListener('click', handleOptionClick));
 }
 
-function showFailImage() {
-    const failImage = document.createElement('img');
-    failImage.src = 'https://www.salesglobe.com/wp-content/uploads/2023/08/fail.png';
-    failImage.id = 'failImage';
-    document.body.appendChild(failImage);
-
-    setTimeout(() => {
-        failImage.remove();
-    }, 3000); // Remove the image after 3 seconds
-}
-	
 function correctAnswerSelected() {
     // Play the hurray sound
     document.getElementById('hurraySound').play();
