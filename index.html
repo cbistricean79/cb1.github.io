@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.0/dist/index.min.js"></script>
+
     <audio id="hurraySound" src="path/to/hurray.mp3"></audio>
 
 	
@@ -167,6 +168,7 @@ const questions = [
 function pressButton() {
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const options = [...randomQuestion.options, randomQuestion.answer].sort(() => Math.random() - 0.5);
+    
     const questionDiv = document.getElementById('question');
     questionDiv.innerHTML = `<p><strong>${randomQuestion.question}</strong></p>`;
     
@@ -206,7 +208,7 @@ function pressButton() {
         }
     }
 
-    // Add click event listener to each option
+   // Add click event listener to each option
     const optionsElements = document.querySelectorAll('.option');
     optionsElements.forEach(opt => opt.addEventListener('click', handleOptionClick));
     // ... existing code ...
