@@ -209,6 +209,7 @@ function pressButton() {
     // Add click event listener to each option
     const optionsElements = document.querySelectorAll('.option');
     optionsElements.forEach(opt => opt.addEventListener('click', handleOptionClick));
+    // ... existing code ...
 }
 	
 function correctAnswerSelected() {
@@ -216,7 +217,7 @@ function correctAnswerSelected() {
     document.getElementById('hurraySound').play();
 
     // Create the confetti effect
-    confetti({
+    confetti.default({
         particleCount: 100,
         spread: 70,
         origin: { y: 0.6 }
