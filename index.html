@@ -199,6 +199,11 @@ function pressButton() {
         optionsElements.forEach(opt => opt.style.color = 'black'); // Reset other options color
         event.target.style.fontWeight = 'bold'; // Make clicked option bold
         event.target.style.color = 'red'; // Make clicked option red
+
+        // Check if the clicked option is the correct answer
+        if (event.target.textContent.includes(randomQuestion.answer)) {
+            correctAnswerSelected(); // Call the function if the correct answer is selected
+        }
     }
 
     // Add click event listener to each option
