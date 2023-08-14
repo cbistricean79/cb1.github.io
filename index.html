@@ -162,17 +162,17 @@ const questions = [
 function pressButton() {
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const options = [...randomQuestion.options, randomQuestion.answer].sort(() => Math.random() - 0.5);
-    
+
     const questionDiv = document.getElementById('question');
     questionDiv.innerHTML = `<p><strong>${randomQuestion.question}</strong></p>`;
-    
+
     const column1 = document.getElementById('column1');
     const column2 = document.getElementById('column2');
     column1.innerHTML = `<p class="option">1. ${options[0] === randomQuestion.answer ? `<span class="correct">${options[0]}</span>` : options[0]}</p>`;
     column1.innerHTML += `<p class="option">3. ${options[2] === randomQuestion.answer ? `<span class="correct">${options[2]}</span>` : options[2]}</p>`;
     column2.innerHTML = `<p class="option">2. ${options[1] === randomQuestion.answer ? `<span class="correct">${options[1]}</span>` : options[1]}</p>`;
     column2.innerHTML += `<p class="option">4. ${options[3] === randomQuestion.answer ? `<span class="correct">${options[3]}</span>` : options[3]}</p>`;
-    
+
     document.getElementById('fancyBox').style.display = 'block';
 
     let countdown = 15; // Increased countdown to 15 seconds
@@ -202,22 +202,14 @@ function pressButton() {
         }
     }
 
-   // Add click event listener to each option
+    // Add click event listener to each option
     const optionsElements = document.querySelectorAll('.option');
     optionsElements.forEach(opt => opt.addEventListener('click', handleOptionClick));
-    // ... existing code ...
 }
-	
+
 function correctAnswerSelected() {
     // Play the hurray sound
     document.getElementById('hurraySound').play();
-
-    // Create the confetti effect
-    confetti.default({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-    });
 }
 
 
