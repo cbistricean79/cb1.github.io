@@ -145,7 +145,7 @@ const questions = [
     { question: "When was Chicago incorporated into a city?", answer: "1837", options: ["1820", "1845", "1853"] },
     { question: "When was the Great Chicago Fire?", answer: "1871", options: ["1865", "1880", "1892"] },
     { question: "What time zone is Chicago in?", answer: "Central", options: ["Eastern", "Mountain", "Pacific"] },
-    { question: "What is one of the major universities in the area?", answer: "Northwestern and University of Illinois Chicago, University of Chicago", options: ["Harvard", "Yale", "Stanford"] },
+    { question: "What is one of the major universities in the area?", answer: "University of Chicago", options: ["Harvard", "Yale", "Stanford"] },
     { question: "What part of the US is Chicago in?", answer: "Midwest", options: ["South", "West", "Northeast"] },
     { question: "What is the capital of Illinois?", answer: "Springfield", options: ["Chicago", "Peoria", "Rockford"] },
     { question: "What is Chicago's nickname?", answer: "The windy City", options: ["The Big Apple", "The Golden City", "The City of Broad Shoulders"] },
@@ -169,7 +169,7 @@ function pressButton() {
     
     document.getElementById('fancyBox').style.display = 'block';
 
-    let countdown = 15;
+    let countdown = 15; // Increased countdown to 15 seconds
     const countdownDiv = document.getElementById('countdown');
     countdownDiv.innerHTML = `Time remaining: ${countdown} seconds`;
     const interval = setInterval(() => {
@@ -181,7 +181,21 @@ function pressButton() {
             document.querySelector('.correct').style.fontWeight = "bold";
         }
     }, 1000);
+
+    // Function to handle option click
+    function handleOptionClick(event) {
+        const optionsElements = document.querySelectorAll('.option');
+        optionsElements.forEach(opt => opt.style.fontWeight = 'normal'); // Reset other options
+        optionsElements.forEach(opt => opt.style.color = 'black'); // Reset other options color
+        event.target.style.fontWeight = 'bold'; // Make clicked option bold
+        event.target.style.color = 'red'; // Make clicked option red
+    }
+
+    // Add click event listener to each option
+    const optionsElements = document.querySelectorAll('.option');
+    optionsElements.forEach(opt => opt.addEventListener('click', handleOptionClick));
 }
+
 
 
 
