@@ -84,15 +84,20 @@ body {
     width: 45%;
 }
 
+.question p {
+    font-size: 24px; /* Increase font size for question */
+    font-weight: bold;
+}
+
 .option {
     cursor: pointer;
-    font-size: 18px; /* Increased font size for options */
+    font-size: 20px; /* Increase font size for options */
     padding: 5px;
-    transition: background-color 0.3s ease; /* Transition effect for hover */
+    transition: background-color 0.3s ease;
 }
 
 .option:hover {
-    background-color: #f0f0f0; /* Background color on hover */
+    background-color: #bcbbbb; /* Background color on hover */
 }
 
 .countdown {
@@ -164,7 +169,7 @@ function pressButton() {
     
     document.getElementById('fancyBox').style.display = 'block';
 
-    let countdown = 10;
+    let countdown = 15;
     const countdownDiv = document.getElementById('countdown');
     countdownDiv.innerHTML = `Time remaining: ${countdown} seconds`;
     const interval = setInterval(() => {
