@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.0/dist/index.min.js"></script>
+	<audio id="hurraySound" src="path/to/hurray.mp3"></audio>
+
+	
+<style type="text/css">
 		
 body {
     background-color: #ffffff;
@@ -201,7 +205,18 @@ function pressButton() {
     const optionsElements = document.querySelectorAll('.option');
     optionsElements.forEach(opt => opt.addEventListener('click', handleOptionClick));
 }
+	
+function correctAnswerSelected() {
+    // Play the hurray sound
+    document.getElementById('hurraySound').play();
 
+    // Create the confetti effect
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+}
 
 
 
